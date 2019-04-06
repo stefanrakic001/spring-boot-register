@@ -3,12 +3,13 @@ package com.codecool.springbootregister.model;
 import com.codecool.springbootregister.Util.Car;
 import com.codecool.springbootregister.Util.ConstructionAddress;
 import com.codecool.springbootregister.Util.Location;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Component
 @Entity
-@Table
 public class Employee {
 
     @Id
@@ -33,19 +34,19 @@ public class Employee {
 
     @Column(name = "hireDate")
     @Temporal(TemporalType.DATE)
-    private java.util.Date hieringDate;
+    private java.util.Date hireDate;
 
     @ManyToOne
     @JoinColumn(name = "salary_id")
     private Salary salary;
 
-    public Employee(String name, boolean availability, Car car, ConstructionAddress constructionAddress, Location location, Date hieringDate, Salary salary) {
+    public Employee(String name, boolean availability, Car car, ConstructionAddress constructionAddress, Location location, Date hireDate, Salary salary) {
         this.name = name;
         this.availability = availability;
         this.car = car;
         this.constructionAddress = constructionAddress;
         this.location = location;
-        this.hieringDate = hieringDate;
+        this.hireDate = hireDate;
         this.salary = salary;
     }
 
@@ -92,12 +93,12 @@ public class Employee {
         this.location = location;
     }
 
-    public Date getHieringDate() {
-        return hieringDate;
+    public Date getHireDate() {
+        return hireDate;
     }
 
-    public void setHieringDate(Date hieringDate) {
-        this.hieringDate = hieringDate;
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
     }
 
     public Salary getSalary() {
@@ -116,7 +117,7 @@ public class Employee {
                 ", car=" + car +
                 ", constructionAddress=" + constructionAddress +
                 ", location=" + location +
-                ", hieringDate=" + hieringDate +
+                ", hireDate=" + hireDate +
                 ", salary=" + salary +
                 '}';
     }
