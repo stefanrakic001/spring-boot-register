@@ -1,8 +1,8 @@
 package com.codecool.springbootregister.model;
 
-import com.codecool.springbootregister.Util.Car;
-import com.codecool.springbootregister.Util.ConstructionAddress;
-import com.codecool.springbootregister.Util.Location;
+import com.codecool.springbootregister.util.Car;
+import com.codecool.springbootregister.util.ConstructionAddress;
+import com.codecool.springbootregister.util.Location;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -17,27 +17,16 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "availability")
     private boolean availability;
-
-    @Column(name = "car")
     private Car car;
-
-    @Column(name = "construction_address")
     private ConstructionAddress constructionAddress;
-
-    @Column(name = "Location")
     private Location location;
 
-    @Column(name = "hireDate")
     @Temporal(TemporalType.DATE)
     private java.util.Date hireDate;
 
     @ManyToOne
-    @JoinColumn(name = "salary_id")
     private Salary salary;
 
     public Employee(String name, boolean availability, Car car, ConstructionAddress constructionAddress, Location location, Date hireDate, Salary salary) {

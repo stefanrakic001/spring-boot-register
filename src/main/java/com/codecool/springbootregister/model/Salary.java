@@ -1,5 +1,6 @@
 package com.codecool.springbootregister.model;
 
+import com.codecool.springbootregister.util.SalaryType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,29 +14,29 @@ public class Salary {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long salaryId;
 
-    private long normalSalary;
+    private long salary;
 
-    private long salarayInAdvance;
+    private SalaryType salaryType;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "payment_date")
     private Date paymentDate;
 
-    public long getNormalSalary() {
-        return normalSalary;
+    public SalaryType getSalaryType() {
+        return salaryType;
     }
 
-    public void setNormalSalary(long normalSalary) {
-        this.normalSalary = normalSalary;
+    public void setSalaryType(SalaryType salaryType) {
+        this.salaryType = salaryType;
     }
 
-    public long getSalarayInAdvance() {
-        return salarayInAdvance;
+    public long getSalary() {
+        return salary;
     }
 
-    public void setSalarayInAdvance(long salarayInAdvance) {
-        this.salarayInAdvance = salarayInAdvance;
+    public void setSalary(long salary) {
+        this.salary = salary;
     }
+
 
     public Date getPaymentDate() {
         return paymentDate;

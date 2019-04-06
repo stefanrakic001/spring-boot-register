@@ -3,10 +3,7 @@ package com.codecool.springbootregister.controller;
 import com.codecool.springbootregister.model.Employee;
 import com.codecool.springbootregister.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class EmployeeController {
     }
 
 
-    @PostMapping(value = "/createEmployee")
+    @RequestMapping(value = "/createEmployee", method = RequestMethod.POST)
     public void createEmployee(@RequestBody Employee employeeInfo) {
         employeeService.createNewEmployee(employeeInfo);
     }

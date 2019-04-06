@@ -1,4 +1,4 @@
-package com.codecool.springbootregister.Util;
+package com.codecool.springbootregister.util;
 
 public enum Location {
     A,
