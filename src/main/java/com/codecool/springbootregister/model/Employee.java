@@ -1,12 +1,12 @@
 package com.codecool.springbootregister.model;
 
 import com.codecool.springbootregister.util.Car;
-import com.codecool.springbootregister.util.ConstructionAddress;
-import com.codecool.springbootregister.util.Location;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 @Entity
@@ -20,8 +20,12 @@ public class Employee {
     private String name;
     private boolean availability;
     private Car car;
-    private ConstructionAddress constructionAddress;
-    private Location location;
+
+    @ManyToOne
+    private Construction construction;
+
+    @OneToOne
+    private Address location;
 
     @Temporal(TemporalType.DATE)
     private java.util.Date hireDate;
@@ -29,17 +33,25 @@ public class Employee {
     @ManyToOne
     private Salary salary;
 
-    public Employee(String name, boolean availability, Car car, ConstructionAddress constructionAddress, Location location, Date hireDate, Salary salary) {
+    public Employee() {
+    }
+
+    public Employee(String name, boolean availability, Car car, Construction construction, Address location, Date hireDate, Salary salary) {
         this.name = name;
         this.availability = availability;
         this.car = car;
-        this.constructionAddress = constructionAddress;
+        this.construction = construction;
         this.location = location;
         this.hireDate = hireDate;
         this.salary = salary;
     }
 
-    public Employee() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -50,7 +62,7 @@ public class Employee {
         this.name = name;
     }
 
-    public boolean getAvailability() {
+    public boolean isAvailability() {
         return availability;
     }
 
@@ -66,19 +78,19 @@ public class Employee {
         this.car = car;
     }
 
-    public ConstructionAddress getConstructionAddress() {
-        return constructionAddress;
+    public Construction getConstruction() {
+        return construction;
     }
 
-    public void setConstructionAddress(ConstructionAddress constructionAddress) {
-        this.constructionAddress = constructionAddress;
+    public void setConstruction(Construction construction) {
+        this.construction = construction;
     }
 
-    public Location getLocation() {
+    public Address getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(Address location) {
         this.location = location;
     }
 
@@ -96,18 +108,5 @@ public class Employee {
 
     public void setSalary(Salary salary) {
         this.salary = salary;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", availability=" + availability +
-                ", car=" + car +
-                ", constructionAddress=" + constructionAddress +
-                ", location=" + location +
-                ", hireDate=" + hireDate +
-                ", salary=" + salary +
-                '}';
     }
 }
