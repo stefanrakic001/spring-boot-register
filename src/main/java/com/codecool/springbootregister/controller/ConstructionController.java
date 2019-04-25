@@ -5,6 +5,8 @@ import com.codecool.springbootregister.service.ConstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/construction")
 public class ConstructionController {
@@ -19,6 +21,11 @@ public class ConstructionController {
     @GetMapping("/{id}")
     public Construction getBy(@PathVariable long id){
         return constructionService.getById(id);
+    }
+
+    @GetMapping("/all")
+    public List<Construction> getAll(){
+        return constructionService.getAll();
     }
 
     @PostMapping("/add")
