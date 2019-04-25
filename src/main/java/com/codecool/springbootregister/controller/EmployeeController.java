@@ -39,14 +39,13 @@ public class EmployeeController {
     public Employee updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findEmployeeById(id);
 
-        employee.setAvailability(employeeDetails.getAvailability());
+        employee.setAvailability(employeeDetails.isAvailable());
         employee.setCar(employeeDetails.getCar());
-        employee.setConstructionAddress(employeeDetails.getConstructionAddress());
+        employee.setConstruction(employeeDetails.getConstruction());
         employee.setLocation(employeeDetails.getLocation());
         employee.setName(employeeDetails.getName());
 
-        Employee updatedEmployee = employeeRepository.save(employee);
-        return updatedEmployee;
+        return employeeRepository.save(employee);
     }
 
     @DeleteMapping("delete/{id}")
