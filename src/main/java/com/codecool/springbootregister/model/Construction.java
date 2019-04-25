@@ -23,6 +23,9 @@ public class Construction {
         this.location = location;
     }
 
+    public Construction() {
+    }
+
     public long getId() {
         return id;
     }

@@ -11,7 +11,11 @@ public class ConstructionService {
     @Autowired
     private ConstructionRepository constructionRepository;
 
-    public Construction addConstruction(Construction construction) {
+    public Construction addOrUpdateConstruction(Construction construction) {
         return constructionRepository.save(construction);
+    }
+
+    public Construction getById(long constructionId) {
+        return constructionRepository.findById(constructionId).orElse(null);
     }
 }
