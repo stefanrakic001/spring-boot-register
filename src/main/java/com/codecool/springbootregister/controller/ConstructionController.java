@@ -40,4 +40,11 @@ public class ConstructionController {
         current.setLocation(updated.getLocation());
         return constructionService.addOrUpdateConstruction(current);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteConstruction(@PathVariable long id){
+        Construction construction = constructionService.getById(id);
+        if(construction == null) throw new NullPointerException("Not found!");
+        constructionService.deleteConstruction(construction);
+    }
 }
