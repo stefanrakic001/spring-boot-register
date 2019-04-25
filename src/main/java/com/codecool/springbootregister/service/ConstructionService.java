@@ -24,4 +24,8 @@ public class ConstructionService {
     public List<Construction> getAll() {
         return constructionRepository.findAll();
     }
+
+    public void deleteConstruction(Construction construction) {
+        constructionRepository.delete(construction);
+    }
 }
