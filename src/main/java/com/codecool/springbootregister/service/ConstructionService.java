@@ -5,6 +5,8 @@ import com.codecool.springbootregister.repository.ConstructionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ConstructionService {
 
@@ -17,5 +19,9 @@ public class ConstructionService {
 
     public Construction getById(long constructionId) {
         return constructionRepository.findById(constructionId).orElse(null);
+    }
+
+    public List<Construction> getAll() {
+        return constructionRepository.findAll();
     }
 }
