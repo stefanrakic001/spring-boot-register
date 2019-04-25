@@ -21,6 +21,15 @@ public class Salary {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date paymentDate;
 
+    public Salary(long salary, SalaryType salaryType, Date paymentDate) {
+        this.salary = salary;
+        this.salaryType = salaryType;
+        this.paymentDate = paymentDate;
+    }
+
+    public Salary() {
+    }
+
     public SalaryType getSalaryType() {
         return salaryType;
     }

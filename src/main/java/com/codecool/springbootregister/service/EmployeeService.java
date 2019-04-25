@@ -14,8 +14,8 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
 
-    public void createNewEmployee(Employee employee) {
-        employeeRepository.save(employee);
+    public Employee createNewEmployee(Employee employee) {
+        return employeeRepository.save(employee);
     }
 
     public List<Employee> getAllAvailableEmployee() {
