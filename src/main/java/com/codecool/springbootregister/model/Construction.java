@@ -9,7 +9,7 @@ public class Construction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Address location;
     @OneToMany(mappedBy = "construction")
     private Set<Employee> employees = new HashSet<>();
@@ -17,6 +17,10 @@ public class Construction {
     public Construction(Address location, Set<Employee> employees) {
         this.location = location;
         this.employees = employees;
+    }
+
+    public Construction(Address location) {
+        this.location = location;
     }
 
     public long getId() {
