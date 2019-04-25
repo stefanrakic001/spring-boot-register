@@ -16,6 +16,11 @@ public class ConstructionController {
         this.constructionService = constructionService;
     }
 
+    @GetMapping("/{id}")
+    public Construction getBy(@PathVariable long id){
+        return constructionService.getById(id);
+    }
+
     @PostMapping("/add")
     public Construction addConstruction(@RequestBody Construction construction){
         return constructionService.addOrUpdateConstruction(construction);
