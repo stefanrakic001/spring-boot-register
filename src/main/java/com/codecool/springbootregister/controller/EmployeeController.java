@@ -39,7 +39,7 @@ public class EmployeeController {
     public Employee updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findEmployeeById(id);
 
-        employee.setAvailability(employeeDetails.isAvailable());
+        employee.setAvailability(employeeDetails.isAvailability());
         employee.setCar(employeeDetails.getCar());
         employee.setConstruction(employeeDetails.getConstruction());
         employee.setLocation(employeeDetails.getLocation());
