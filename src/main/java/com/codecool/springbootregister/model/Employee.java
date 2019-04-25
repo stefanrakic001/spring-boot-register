@@ -27,8 +27,8 @@ public class Employee {
     @OneToOne
     private Address location;
 
-    @Temporal(TemporalType.DATE)
-    private java.util.Date hireDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date hireDate;
 
     @ManyToOne
     private Salary salary;

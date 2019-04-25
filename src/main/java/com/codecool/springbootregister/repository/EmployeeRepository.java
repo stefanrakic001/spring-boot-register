@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    public List<Employee> getAllByAvailabilityTrue();
+    List<Employee> getAllByAvailabilityTrue();
+
+    Employee findEmployeeById(Long l);
+
+
 
 }
