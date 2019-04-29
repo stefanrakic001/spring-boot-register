@@ -24,7 +24,6 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-
     @PostMapping(value = "/createEmployee")
     public Employee createEmployee(@RequestBody Employee employeeInfo) {
         return employeeService.createNewEmployee(employeeInfo);
@@ -37,12 +36,10 @@ public class EmployeeController {
         return employee;
     }
 
-
     @GetMapping(value = "/employees")
     public List<Employee> getAllEmployee() {
         return employeeService.getAllEmployee();
     }
-
 
     @PutMapping("/updateEmp/{id}")
     public Employee updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {

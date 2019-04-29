@@ -17,9 +17,6 @@ public class Address {
     @JsonIgnore
     @OneToOne(mappedBy = "location")
     private Employee employee;
-    @JsonIgnore
-    @OneToOne(mappedBy = "location")
-    private Construction construction;
 
     public Address(String city, String address, String zipCode) {
         this.city = city;
@@ -70,11 +67,5 @@ public class Address {
         this.employee = employee;
     }
 
-    public Construction getConstruction() {
-        return construction;
-    }
 
-    public void setConstruction(Construction construction) {
-        this.construction = construction;
-    }
 }

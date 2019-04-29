@@ -20,23 +20,21 @@ public class Employee {
     private String name;
     private boolean availability;
     private Car car;
+    private String construction;
 
-    @ManyToOne
-    private Construction construction;
-
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Address location;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date hireDate;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Salary salary;
 
     public Employee() {
     }
 
-    public Employee(String name, boolean availability, Car car, Construction construction, Address location, Date hireDate, Salary salary) {
+    public Employee(String name, boolean availability, Car car, String construction, Address location, Date hireDate, Salary salary) {
         this.name = name;
         this.availability = availability;
         this.car = car;
@@ -78,11 +76,11 @@ public class Employee {
         this.car = car;
     }
 
-    public Construction getConstruction() {
+    public String getConstruction() {
         return construction;
     }
 
-    public void setConstruction(Construction construction) {
+    public void setConstruction(String construction) {
         this.construction = construction;
     }
 
