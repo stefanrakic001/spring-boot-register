@@ -8,6 +8,8 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "_users")
 public class User {
 
 @Id
@@ -30,9 +32,10 @@ private long id;
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(@NotBlank @Size(min = 4, max = 20) String username, @NotBlank @Size(min = 8) String password) {
+    public User(@NotBlank @Size(min = 4, max = 20) String username, @NotBlank @Size(min = 8) String password, Set<Role> roles) {
         this.username = username;
         this.password = password;
+        this.roles = roles;
     }
 
     public User() {
