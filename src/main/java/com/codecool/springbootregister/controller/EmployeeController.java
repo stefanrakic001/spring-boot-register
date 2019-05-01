@@ -29,12 +29,6 @@ public class EmployeeController {
         return employeeService.createNewEmployee(employeeInfo);
     }
 
-    @PostMapping("/{employeeId}/addSalary")
-    public Employee addSalaryToEmployee(@PathVariable("employeeId") long id, @RequestBody Salary salary){
-        Employee employee = employeeService.findById(id);
-        employee.setSalary(salary);
-        return employee;
-    }
 
     @GetMapping(value = "/employees")
     public List<Employee> getAllEmployee() {
@@ -48,7 +42,7 @@ public class EmployeeController {
         employee.setAvailability(employeeDetails.isAvailability());
         employee.setCar(employeeDetails.getCar());
         employee.setConstruction(employeeDetails.getConstruction());
-        employee.setLocation(employeeDetails.getLocation());
+        employee.setAddress(employeeDetails.getAddress());
         employee.setName(employeeDetails.getName());
 
         return employeeRepository.save(employee);

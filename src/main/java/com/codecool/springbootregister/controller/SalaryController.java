@@ -1,19 +1,36 @@
 package com.codecool.springbootregister.controller;
 
 import com.codecool.springbootregister.model.Salary;
+import com.codecool.springbootregister.repository.EmployeeRepository;
 import com.codecool.springbootregister.service.SalaryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@Slf4j
 @RestController
+@RequestMapping("/salary")
 public class SalaryController {
 
     private SalaryService salaryService;
+
+    private EmployeeRepository employeeRepository;
 
     @Autowired
     public SalaryController(SalaryService salaryService) {
         this.salaryService = salaryService;
     }
 
+    @PostMapping("/add/id={id}")
+    public boolean addToEmployee(@PathVariable("id") Long employeeId, @RequestBody Salary salary) {
+        log.info("Eddig ment.");
+        return salaryService.addSalaryToEmployee(employeeId, salary);
+    }
+
+    @GetMapping("/get/id={id}")
+    public List<Salary> getSalariesByEmployeeId(@PathVariable("id") Long employeeId) {
+        return salaryService.getSalariesByEmployeeId(employeeId);
+    }
 }

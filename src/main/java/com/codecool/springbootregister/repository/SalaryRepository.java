@@ -1,4 +1,12 @@
 package com.codecool.springbootregister.repository;
 
-public interface SalaryRepository {
+import com.codecool.springbootregister.model.Employee;
+import com.codecool.springbootregister.model.Salary;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface SalaryRepository extends JpaRepository<Salary, Long> {
+
+    public List<Salary> findAllByEmployee(Employee employee);
 }
