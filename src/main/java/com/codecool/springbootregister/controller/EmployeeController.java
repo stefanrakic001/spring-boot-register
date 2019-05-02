@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController {
 
     private EmployeeService employeeService;
@@ -24,7 +24,7 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    @PostMapping(value = "/createEmployee")
+    @PostMapping(value = "/")
     public Employee createEmployee(@RequestBody Employee employeeInfo) {
         return employeeService.createNewEmployee(employeeInfo);
     }
@@ -36,12 +36,12 @@ public class EmployeeController {
         return employee;
     }
 
-    @GetMapping(value = "/employees")
+    @GetMapping(value = "/all")
     public List<Employee> getAllEmployee() {
         return employeeService.getAllEmployee();
     }
 
-    @PutMapping("/updateEmp/{id}")
+    @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findEmployeeById(id);
 
@@ -54,7 +54,7 @@ public class EmployeeController {
         return employeeRepository.save(employee);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEmployee(@PathVariable(value = "id") Long id) {
         employeeRepository.delete(employeeRepository.findEmployeeById(id));
     }
