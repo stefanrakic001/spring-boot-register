@@ -1,6 +1,6 @@
 package com.codecool.springbootregister.model;
 
-import com.codecool.springbootregister.util.Car;
+import com.codecool.springbootregister.util.AvailabilityType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+
 
 @Component
 @Entity
@@ -25,12 +24,13 @@ public class Employee {
     private Long id;
 
     private String name;
-    private boolean availability;
-    private String car;
+    private AvailabilityType availability;
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    private Car car;
     private String construction;
     private String address;
 
 
-    private String hireDate;
+    private LocalDate hireDate;
 
 }

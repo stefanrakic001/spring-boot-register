@@ -5,10 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -27,6 +27,6 @@ public class Salary {
     private Employee employee;
 
     private SalaryType salaryType;
-    private String paymentDate;
+    private LocalDate paymentDate;
 
 }
