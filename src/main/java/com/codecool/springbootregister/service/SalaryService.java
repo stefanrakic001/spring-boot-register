@@ -36,9 +36,7 @@ public class SalaryService {
 
     public List<Salary> getSalariesByEmployeeId(Long employeeId) {
         try {
-            Employee employee = employeeRepository.findEmployeeById(employeeId);
-
-            return salaryRepository.findAllByEmployee(employee);
+            return salaryRepository.findAllByEmployeeId(employeeId);
         } catch (Exception e) {
             log.info(e.toString());
         }

@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface SalaryRepository extends JpaRepository<Salary, Long> {
 
-    public List<Salary> findAllByEmployee(Employee employee);
+
+    List<Salary> findAllByEmployeeId(Long employeeId);
 }
