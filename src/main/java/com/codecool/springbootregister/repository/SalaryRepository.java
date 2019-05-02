@@ -1,6 +1,5 @@
 package com.codecool.springbootregister.repository;
 
-import com.codecool.springbootregister.model.Employee;
 import com.codecool.springbootregister.model.Salary;
 import org.springframework.data.jpa.repository.JpaRepository;
 
