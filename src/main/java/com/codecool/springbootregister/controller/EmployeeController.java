@@ -1,7 +1,6 @@
 package com.codecool.springbootregister.controller;
 
 import com.codecool.springbootregister.model.Employee;
-import com.codecool.springbootregister.model.Salary;
 import com.codecool.springbootregister.repository.EmployeeRepository;
 import com.codecool.springbootregister.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +12,11 @@ import java.util.List;
 @RequestMapping("/employee")
 public class EmployeeController {
 
+    @Autowired
     private EmployeeService employeeService;
-    private Employee employee;
-    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService, Employee employee, EmployeeRepository employeeRepository) {
-        this.employeeService = employeeService;
-        this.employee = employee;
-        this.employeeRepository = employeeRepository;
-    }
+    private EmployeeRepository employeeRepository;
 
     @PostMapping(value = "/createEmployee")
     public Employee createEmployee(@RequestBody Employee employeeInfo) {
@@ -39,7 +33,7 @@ public class EmployeeController {
     public Employee updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findEmployeeById(id);
 
-        employee.setAvailability(employeeDetails.isAvailability());
+        employee.setAvailability(employeeDetails.getAvailability());
         employee.setCar(employeeDetails.getCar());
         employee.setConstruction(employeeDetails.getConstruction());
         employee.setAddress(employeeDetails.getAddress());

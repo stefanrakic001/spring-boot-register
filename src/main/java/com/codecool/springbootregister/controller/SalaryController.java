@@ -14,18 +14,11 @@ import java.util.List;
 @RequestMapping("/salary")
 public class SalaryController {
 
-    private SalaryService salaryService;
-
-    private EmployeeRepository employeeRepository;
-
     @Autowired
-    public SalaryController(SalaryService salaryService) {
-        this.salaryService = salaryService;
-    }
+    private SalaryService salaryService;
 
     @PostMapping("/add/id={id}")
     public boolean addToEmployee(@PathVariable("id") Long employeeId, @RequestBody Salary salary) {
-        log.info("Eddig ment.");
         return salaryService.addSalaryToEmployee(employeeId, salary);
     }
 

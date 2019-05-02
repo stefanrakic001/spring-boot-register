@@ -24,7 +24,9 @@ public class Employee {
     private Long id;
 
     private String name;
+    @Enumerated(EnumType.STRING)
     private AvailabilityType availability;
+    @Enumerated(EnumType.STRING)
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     private Car car;
     private String construction;

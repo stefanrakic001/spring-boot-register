@@ -1,6 +1,5 @@
 package com.codecool.springbootregister.config;
 
-import com.codecool.springbootregister.model.Employee;
 import com.codecool.springbootregister.model.Role;
 import com.codecool.springbootregister.model.User;
 import com.codecool.springbootregister.repository.RoleRepository;
