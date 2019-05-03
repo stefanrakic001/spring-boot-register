@@ -22,8 +22,13 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @PostMapping(value = "/createEmployee")
-    public Employee createEmployee(@RequestBody Employee employeeInfo) {
-        return employeeService.createNewEmployee(employeeInfo);
+    public ResponseMessage createEmployee(@RequestBody Employee employeeInfo) {
+        try {
+            employeeService.createNewEmployee(employeeInfo);
+            return new ResponseMessage("SUCCESS!");
+        } catch (Exception e) {
+            return new ResponseMessage(e.toString());
+        }
     }
 
 
