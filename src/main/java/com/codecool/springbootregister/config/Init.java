@@ -46,9 +46,6 @@ public class Init implements CommandLineRunner {
                 .carType("BMW")
                 .licencePlate("HTM-222").build();
 
-        carRepository.save(myCar);
-
-
         Employee employee = Employee.builder()
                 .address("Ló utca 2")
                 .availability(AvailabilityType.AVAILABLE)
@@ -58,7 +55,6 @@ public class Init implements CommandLineRunner {
                 .name("István Péter").build();
 
         employeeRepository.save(employee);
-
 
         User user = new User("admin", encoder.encode("12345678"), roles);
 

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -27,11 +28,10 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private AvailabilityType availability;
     @Enumerated(EnumType.STRING)
-    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Car car;
     private String construction;
     private String address;
-
 
     private LocalDate hireDate;
 
