@@ -38,23 +38,20 @@ public class EmployeeController {
     }
 
     @PutMapping("/updateEmp/{id}")
-    public Employee updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
-        Employee employee = employeeRepository.findEmployeeById(id);
-
-        employee.setAvailability(employeeDetails.getAvailability());
-        employee.setCar(employeeDetails.getCar());
-        employee.setConstruction(employeeDetails.getConstruction());
-        employee.setAddress(employeeDetails.getAddress());
-        employee.setName(employeeDetails.getName());
-
-        return employeeRepository.save(employee);
+    public ResponseMessage updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
+       try {
+        employeeRepository.save(employeeDetails);
+        return new ResponseMessage("SUCCESS!");
+       } catch (Exception e) {
+           return new ResponseMessage(e.toString());
+       }
     }
 
     @DeleteMapping("delete/{id}")
     public ResponseMessage deleteEmployee(@PathVariable(value = "id") Long id) {
         try {
             employeeRepository.delete(employeeRepository.findEmployeeById(id));
-            return new ResponseMessage("Employee with id: " + id + " is deleted from the database.");
+            return new ResponseMessage("SUCCESS!");
         } catch (Exception e) {
             log.info(e.toString());
             return new ResponseMessage(e.toString());

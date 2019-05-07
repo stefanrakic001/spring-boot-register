@@ -28,7 +28,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private AvailabilityType availability;
     @Enumerated(EnumType.STRING)
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private Car car;
     private String construction;
     private String address;
