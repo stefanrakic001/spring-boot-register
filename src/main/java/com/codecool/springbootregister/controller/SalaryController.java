@@ -26,8 +26,8 @@ public class SalaryController {
         return salaryService.getSalariesByEmployeeId(employeeId);
     }
 
-    @GetMapping("/latest/{employeeId}")
-    public Salary getLatestSalaryBy(@PathVariable("employeeId") long employeeId){
+    @GetMapping("/latest/id={id}")
+    public List<Salary>getLatestSalaryBy(@PathVariable("id") Long employeeId){
         return salaryService.getLatestSalaryBy(employeeId);
     }
 }

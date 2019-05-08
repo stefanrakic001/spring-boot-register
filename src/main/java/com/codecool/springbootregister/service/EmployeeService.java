@@ -20,8 +20,6 @@ public class EmployeeService {
 
 
     public Employee createNewEmployee(Employee employee) {
-        // TODO if car null, don't set it
-        System.out.println(employee.getCar());
         Car car;
         if(employee.getCar().getId() != null) {
             car = carRepository.findById(employee.getCar().getId())

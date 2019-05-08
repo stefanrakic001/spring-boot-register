@@ -43,7 +43,7 @@ public class SalaryService {
         return new ArrayList<>();
     }
 
-    public Salary getLatestSalaryBy(long employeeId) {
-        return salaryRepository.findTopByEmployeeIdOrderByEmployeeDesc(employeeId);
+    public List<Salary> getLatestSalaryBy(Long employeeId) {
+        return salaryRepository.findSalariesByEmployeeOrderByPaymentDateDesc(employeeId);
     }
 }
