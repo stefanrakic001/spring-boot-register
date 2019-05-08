@@ -40,6 +40,9 @@ public class EmployeeController {
     @PutMapping("/updateEmp/{id}")
     public ResponseMessage updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
        try {
+        if(employeeDetails.getCar().getId() == null){
+            employeeDetails.setCar(null);
+        }
         employeeRepository.save(employeeDetails);
         return new ResponseMessage("SUCCESS!");
        } catch (Exception e) {
@@ -47,7 +50,7 @@ public class EmployeeController {
        }
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseMessage deleteEmployee(@PathVariable(value = "id") Long id) {
         try {
             employeeRepository.delete(employeeRepository.findEmployeeById(id));

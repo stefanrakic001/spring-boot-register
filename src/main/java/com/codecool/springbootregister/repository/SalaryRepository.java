@@ -9,4 +9,6 @@ public interface SalaryRepository extends JpaRepository<Salary, Long> {
 
 
     List<Salary> findAllByEmployeeId(Long employeeId);
+
+    Salary findTopByEmployeeIdOrderByEmployeeDesc(long id);
 }

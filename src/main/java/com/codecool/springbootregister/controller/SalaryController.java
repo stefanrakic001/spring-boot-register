@@ -1,7 +1,6 @@
 package com.codecool.springbootregister.controller;
 
 import com.codecool.springbootregister.model.Salary;
-import com.codecool.springbootregister.repository.EmployeeRepository;
 import com.codecool.springbootregister.service.SalaryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +24,10 @@ public class SalaryController {
     @GetMapping("/get/id={id}")
     public List<Salary> getSalariesByEmployeeId(@PathVariable("id") Long employeeId) {
         return salaryService.getSalariesByEmployeeId(employeeId);
+    }
+
+    @GetMapping("/latest/{employeeId}")
+    public Salary getLatestSalaryBy(@PathVariable("employeeId") long employeeId){
+        return salaryService.getLatestSalaryBy(employeeId);
     }
 }
