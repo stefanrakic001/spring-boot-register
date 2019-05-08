@@ -1,5 +1,6 @@
 package com.codecool.springbootregister.service;
 
+import com.codecool.springbootregister.message.response.ResponseMessage;
 import com.codecool.springbootregister.model.Employee;
 import com.codecool.springbootregister.model.Salary;
 import com.codecool.springbootregister.repository.EmployeeRepository;
@@ -21,29 +22,28 @@ public class SalaryService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public boolean addSalaryToEmployee(Long employeeId, Salary salary){
+    public ResponseMessage addSalaryToEmployee(Long employeeId, Salary salary){
         try {
             Employee employee = employeeRepository.findEmployeeById(employeeId);
 
             salary.setEmployee(employee);
             salaryRepository.save(salary);
-            return true;
+            return new ResponseMessage("SUCCESS!");
         } catch (Exception e) {
-            log.info(e.toString());
-            return false;
+
+            return new ResponseMessage(e.toString());
         }
     }
 
-    public List<Salary> getSalariesByEmployeeId(Long employeeId) {
-        try {
-            return salaryRepository.findAllByEmployeeId(employeeId);
-        } catch (Exception e) {
-            log.info(e.toString());
-        }
-        return new ArrayList<>();
-    }
 
     public List<Salary> getLatestSalaryBy(Long employeeId) {
-        return salaryRepository.findSalariesByEmployeeOrderByPaymentDateDesc(employeeId);
+        Employee employee = employeeRepository.findEmployeeById(employeeId);
+        try {
+            return salaryRepository.findSalariesByEmployeeOrderByPaymentDateDesc(employee);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            return new ArrayList<>();
+        }
     }
 }

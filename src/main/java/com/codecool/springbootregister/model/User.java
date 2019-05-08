@@ -1,7 +1,6 @@
 package com.codecool.springbootregister.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,7 +27,7 @@ private long id;
 
     @NotBlank
     @JsonIgnore
-    @Size(min = 8)
+    @Size(min = 5)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -37,7 +36,7 @@ private long id;
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(@NotBlank @Size(min = 4, max = 20) String username, @NotBlank @Size(min = 8) String password, Set<Role> roles) {
+    public User(@NotBlank @Size(min = 4, max = 20) String username, @NotBlank @Size(min = 5) String password, Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;

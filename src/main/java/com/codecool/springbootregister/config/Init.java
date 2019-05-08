@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -56,31 +57,31 @@ public class Init implements CommandLineRunner {
         employeeRepository.save(employee);
 
         Salary salary = Salary.builder()
-                .salary(10000)
-                .salaryType(SalaryType.NORMAL)
+                .amount(new BigDecimal(1000))
+                .type(SalaryType.NORMAL)
                 .employee(employee)
                 .paymentDate(LocalDate.now())
                 .build();
 
         Salary salary2 = Salary.builder()
-                .salary(55555)
-                .salaryType(SalaryType.NORMAL)
+                .amount(new BigDecimal(500))
+                .type(SalaryType.NORMAL)
                 .employee(employee)
-                .paymentDate(LocalDate.now())
+                .paymentDate(LocalDate.of(2000,2,4))
                 .build();
 
         Salary salary3 = Salary.builder()
-                .salary(8888)
-                .salaryType(SalaryType.NORMAL)
+                .amount(new BigDecimal(500))
+                .type(SalaryType.NORMAL)
                 .employee(employee)
-                .paymentDate(LocalDate.now())
+                .paymentDate(LocalDate.of(2000,2,2))
                 .build();
 
         salaryRepository.save(salary);
         salaryRepository.save(salary2);
         salaryRepository.save(salary3);
 
-        User user = new User("admin", encoder.encode("12345678"), roles);
+        User user = new User("admin", encoder.encode("admin"), roles);
 
         roleRepository.save(new Role(RoleName.ROLE_USER));
 

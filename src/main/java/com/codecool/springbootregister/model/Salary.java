@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -21,12 +22,14 @@ public class Salary {
     @Column(name = "salary_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long salaryId;
-    private long salary;
+
+    private BigDecimal amount;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     private Employee employee;
 
-    private SalaryType salaryType;
+    @Enumerated(EnumType.STRING)
+    private SalaryType type;
     private LocalDate paymentDate;
 
 }
