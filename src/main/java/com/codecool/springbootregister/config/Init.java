@@ -56,13 +56,6 @@ public class Init implements CommandLineRunner {
 
         employeeRepository.save(employee);
 
-        Employee employee4 = Employee.builder()
-                .address("Ló utca 2")
-                .availability(AvailabilityType.AVAILABLE)
-                .hireDate(LocalDate.now())
-                .construction("Béla utca 23")
-                .name("István Péter").build();
-        employeeRepository.save(employee4);
 
         Employee employee1 = Employee.builder()
                 .address("Ló utca 2")
