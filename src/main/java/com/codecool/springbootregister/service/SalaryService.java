@@ -46,4 +46,8 @@ public class SalaryService {
             return new ArrayList<>();
         }
     }
+
+    public void deleteSalary(Employee emloyee) {
+        salaryRepository.deleteByEmployee(emloyee);
+    }
 }

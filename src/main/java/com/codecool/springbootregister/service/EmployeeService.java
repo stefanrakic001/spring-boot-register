@@ -18,6 +18,8 @@ public class EmployeeService {
     @Autowired
     CarRepository carRepository;
 
+    @Autowired
+    SalaryService salaryService;
 
     public Employee createNewEmployee(Employee employee) {
         Car car;
@@ -30,6 +32,11 @@ public class EmployeeService {
 
         employee.setCar(car);
         return employeeRepository.save(employee);
+    }
+
+    public void deleteEmployee (Employee employee) {
+        salaryService.deleteSalary(employee);
+        employeeRepository.delete(employee);
     }
 
     public List<Employee> getAllAvailableEmployee() {

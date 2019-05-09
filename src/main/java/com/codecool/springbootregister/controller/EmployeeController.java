@@ -53,7 +53,9 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public ResponseMessage deleteEmployee(@PathVariable(value = "id") Long id) {
         try {
-            employeeRepository.delete(employeeRepository.findEmployeeById(id));
+
+            //employeeRepository.delete(employeeRepository.findEmployeeById(id));
+            employeeService.deleteEmployee(employeeRepository.findEmployeeById(id));
             return new ResponseMessage("SUCCESS!");
         } catch (Exception e) {
             log.info(e.toString());
