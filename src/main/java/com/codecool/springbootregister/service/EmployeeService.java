@@ -44,7 +44,7 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployee() {
-        return this.employeeRepository.findAll();
+        return this.employeeRepository.getAllEmployeesOrderById();
     }
 
 

@@ -45,11 +45,14 @@ public class Init implements CommandLineRunner {
                 .carType("BMW")
                 .licencePlate("HTM-222").build();
 
+        Car vw = Car.builder()
+                .carType("OPEL")
+                .licencePlate("PTH-444").build();
+
 
         Employee employee = Employee.builder()
                 .address("Ló utca 2")
                 .availability(AvailabilityType.AVAILABLE)
-                .car(myCar)
                 .hireDate(LocalDate.now())
                 .construction("Béla utca 23")
                 .name("István Imre").build();
@@ -60,7 +63,6 @@ public class Init implements CommandLineRunner {
         Employee employee1 = Employee.builder()
                 .address("Ló utca 2")
                 .availability(AvailabilityType.NOTAVAILABLE)
-
                 .hireDate(LocalDate.now())
                 .construction("Béla utca 23")
                 .name("Imre Ádám").build();
@@ -70,6 +72,7 @@ public class Init implements CommandLineRunner {
         Employee employee2 = Employee.builder()
                 .address("Pillangó utca 2")
                 .availability(AvailabilityType.SICKLEAVE)
+                .car(vw)
                 .hireDate(LocalDate.now())
                 .construction("Ó utca 1")
                 .name("Jó Pál").build();
@@ -79,6 +82,7 @@ public class Init implements CommandLineRunner {
         Employee employee3 = Employee.builder()
                 .address("Pillangó utca 2")
                 .availability(AvailabilityType.HOLIDAY)
+                .car(myCar)
                 .hireDate(LocalDate.now())
                 .construction("Ó utca 1")
                 .name("Kovács Zsolt").build();

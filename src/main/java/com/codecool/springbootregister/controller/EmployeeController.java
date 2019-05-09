@@ -40,7 +40,7 @@ public class EmployeeController {
     @PutMapping("/updateEmp/{id}")
     public ResponseMessage updateEmployee(@PathVariable(value = "id") Long id, @RequestBody Employee employeeDetails) {
        try {
-        if(employeeDetails.getCar().getId() == null){
+        if(employeeDetails.getCar() == null){
             employeeDetails.setCar(null);
         }
         employeeRepository.save(employeeDetails);
